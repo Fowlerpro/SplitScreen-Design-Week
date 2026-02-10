@@ -13,4 +13,15 @@ public class S_PuzzleSlot : MonoBehaviour
     {
         
     }
+
+    bool SlotPart(GameObject Part) 
+    {
+        if (Part != null) 
+        {
+            return true;
+        }
+                
+        return false;
+    }
 }
+

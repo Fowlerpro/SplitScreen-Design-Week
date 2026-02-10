@@ -1,7 +1,10 @@
 using UnityEngine;
 
+
 public class S_PuzzlePart : MonoBehaviour
 {
+    int PattrenIndex = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
