@@ -18,6 +18,7 @@ public class S_PuzzleSlot : MonoBehaviour
     {
         if (Part != null) 
         {
+            Part.transform.position = transform.position;
             return true;
         }
                 
