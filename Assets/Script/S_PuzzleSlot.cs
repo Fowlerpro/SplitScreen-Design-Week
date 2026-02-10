@@ -25,13 +25,23 @@ public class S_PuzzleSlot : MonoBehaviour
     {
         if (Part == null) return false;
 
-        if (Part.GetComponent<S_PuzzlePart>().PattrenIndex == 0)//SlotIndex
+        if (Part.GetComponent<S_PuzzlePart>().PattrenIndex == SlotIndex)//SlotIndex
         {
             Part.transform.position = transform.position;
             return true;
         }
 
         return false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision == null) return;
+        else
+        {
+            SlotPart(collision.gameObject, 0);
+
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -46,14 +56,6 @@ public class S_PuzzleSlot : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision == null) return;
-        else
-        {
-            SlotPart(collision.gameObject, 0);
-            
-        }
-    }
+    
 }
 

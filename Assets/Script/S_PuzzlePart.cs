@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class S_PuzzlePart : MonoBehaviour
 {
-    Vector3[] Pattren = new Vector3[5];
+    public Vector3[] Pattren = new Vector3[5];
 
     public int PattrenIndex = 0;
 
@@ -19,8 +19,8 @@ public class S_PuzzlePart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
+
 }
