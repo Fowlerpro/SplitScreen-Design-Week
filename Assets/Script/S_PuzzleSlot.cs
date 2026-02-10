@@ -10,36 +10,51 @@ public class S_PuzzleSlot : MonoBehaviour
 
     int[] NumSlots = { 1, 1, 2, 2, 3, 4 };
 
+    S_PuzzlePart GG;
+
+    Vector3[] SlotLocations = new Vector3[5];
+
     // Randomize all needed pattrens
     void NewSlots()
     {
         Slots = new int[NumSlots[Random.Range(0, NumSlots.Length)]];
 
+        SlotLocations = new Vector3[Slots.Length];
+
         for (int i = 0; i < Slots.Length; i++)
         {
-            Slots[i] = Random.Range(0, 5);
+            Slots[i] = Random.Range(0, GG.GetPattrenSize());
+            if (i == 0)
+                SlotLocations[0] = transform.position + transform.right * 20;
+
+            SlotLocations[i] = SlotLocations[i - 1] + transform.right * 20;
+
         }
     }
 
+    // Takes a GameObject 
     bool SlotPart(GameObject Part, int SlotIndex)
     {
-        if (Part == null) return false;
+        if (Part.GetComponent<S_PuzzlePart>() == null) return false;
 
         if (Part.GetComponent<S_PuzzlePart>().PattrenIndex == SlotIndex)//SlotIndex
         {
             Part.transform.position = transform.position;
             return true;
         }
-
-        return false;
+        else
+            return false;
     }
 
+    // Collision Test
     private void OnCollisionEnter(Collision collision)
     {
         if (collision == null) return;
         else
         {
-            SlotPart(collision.gameObject, 0);
+
+            if (!SlotPart(collision.gameObject, Slots[0]))
+                collision.gameObject.transform.position = transform.position + transform.up * 5;
 
         }
     }
@@ -47,15 +62,15 @@ public class S_PuzzleSlot : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        NewSlots();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
+
 }
 
