@@ -1,10 +1,12 @@
+using System;
+using System.Globalization;
 using UnityEngine;
 
 public class S_PuzzleSlot : MonoBehaviour
 {
     int[] Slots = new int[5];
 
-    int[] NumSlots = [4,4];
+    int[] NumSlots;
 
     // Randomize all needed pattrens
     void NewSlots()
