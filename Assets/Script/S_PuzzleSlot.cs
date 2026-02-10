@@ -1,17 +1,19 @@
+using System.Globalization;
+using UnityEditor;
 using UnityEngine;
 
 public class S_PuzzleSlot : MonoBehaviour
 {
+    S_PuzzlePart jj;
+
     int[] Slots = new int[5];
 
-    //Jo Branch, Commenting this out, error is occuring and says my c# isn't version 12 or above,
-    //so feel free to merge over this if it causes a merge error!
-    //int[] NumSlots = [4,4];
+    int[] NumSlots = {1,1,2,2,3,4};
 
     // Randomize all needed pattrens
     void NewSlots()
     {
-        Slots = new int[Random.Range(0, 5)];
+        Slots = new int[NumSlots[Random.Range(0,NumSlots.Length)]];
 
         for (int i = 0; i < Slots.Length; i++)
         {
