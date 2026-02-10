@@ -4,7 +4,9 @@ public class S_PuzzleSlot : MonoBehaviour
 {
     int[] Slots = new int[5];
 
-    int[] NumSlots = [4,4];
+    //Jo Branch, Commenting this out, error is occuring and says my c# isn't version 12 or above,
+    //so feel free to merge over this if it causes a merge error!
+    //int[] NumSlots = [4,4];
 
     // Randomize all needed pattrens
     void NewSlots()
