@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class DisplayChanges : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -9,12 +9,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             // Activate display 2 (zero-indexed).
             Display.displays[1].Activate();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
