@@ -1,4 +1,5 @@
 using System.Globalization;
+using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -13,25 +14,34 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
 
     S_PuzzlePart GG;
 
+    public GameObject prefab;
 
-    Vector3[] SlotLocations = new Vector3[5];
+
+    private GameObject[] Slots;
 
     // Randomizes all pattrens and array sizes
     void NewSlots()
     {
-        NumSlots = new int[MaxNumSlots[Random.Range(0, MaxNumSlots.Length)]];
 
-        SlotLocations = new Vector3[NumSlots.Length];
+        NumSlots = new int[MaxNumSlots[Random.Range(0, MaxNumSlots.Length)]];
+        Slots = new GameObject[NumSlots.Length];
 
         for (int i = 0; i < NumSlots.Length; i++)
         {
-            NumSlots[i] = Random.Range(0, GG.GetPattrenSize());
+            NumSlots[i] = Random.Range(0, 5);
+
             if (i == 0)
-                SlotLocations[0] = transform.position + transform.right * 20;
+                Slots[i] = Instantiate(prefab, transform.localPosition, transform.rotation);
             else
-                SlotLocations[i] = SlotLocations[i - 1] + transform.right * 20;
-            //Instantiate(, gameObject.transform.localPosition, Quaternion.identity);
+            {
+                int L = i - 1;
+                if (L < 0)
+                    L = 0;
+
+                Slots[i] = Instantiate(prefab, Slots[L].transform.localPosition + Slots[L].transform.right * 2, transform.rotation);
+            }
         }
+
     }
 
     // Takes a GameObject and checks if it has S_PizzlePart Script if so then does it have the right index
@@ -45,7 +55,10 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
             return true;
         }
         else
+        {
             return false;
+
+        }
     }
 
     // Collision Test
@@ -54,13 +67,14 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         if (collision == null) return;
         else
         {
+            bool can = SlotPart(collision.gameObject, 0);
 
-            if (!SlotPart(collision.gameObject, NumSlots[0]))
+            if (can == false)//NumSlots[0]
             {
                 collision.gameObject.transform.position = transform.position + transform.up * 5;
                 collision.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
-                //collision.gameObject.GetComponent<S_PuzzlePart>().RandomPattrenIndex();
+                //NewSlots();
             }
             else
             {
