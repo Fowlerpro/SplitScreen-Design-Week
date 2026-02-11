@@ -138,7 +138,6 @@ GameObject:
   - component: {fileID: 1493591289552465241}
   - component: {fileID: 4359096305153120386}
   - component: {fileID: 4379999339085844052}
-  - component: {fileID: 1903232163197596374}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -217,28 +216,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1903232163197596374
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8062500076148152068}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &9111152441244201669
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +225,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7622559754014631859}
-  - component: {fileID: 2718031105150038411}
   - component: {fileID: 82380421386077606}
   m_Layer: 0
   m_Name: Button Prefab
@@ -274,19 +250,6 @@ Transform:
   - {fileID: 2897920244647823305}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2718031105150038411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9111152441244201669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eca30fd589099b34e9f815a8aad6bc91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::S_ButtonBehaviors
-  connectedLight: {fileID: 8061182761606920771}
 --- !u!65 &82380421386077606
 BoxCollider:
   m_ObjectHideFlags: 0
