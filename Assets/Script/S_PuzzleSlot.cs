@@ -2,6 +2,7 @@ using System.Globalization;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.LowLevelPhysics;
 
 public class S_PuzzleSlot : MonoBehaviour
 {
@@ -12,9 +13,10 @@ public class S_PuzzleSlot : MonoBehaviour
 
     S_PuzzlePart GG;
 
+
     Vector3[] SlotLocations = new Vector3[5];
 
-    // Randomize all needed pattrens
+    // Randomizes all pattrens and array sizes
     void NewSlots()
     {
         Slots = new int[NumSlots[Random.Range(0, NumSlots.Length)]];
@@ -26,9 +28,9 @@ public class S_PuzzleSlot : MonoBehaviour
             Slots[i] = Random.Range(0, GG.GetPattrenSize());
             if (i == 0)
                 SlotLocations[0] = transform.position + transform.right * 20;
-
-            SlotLocations[i] = SlotLocations[i - 1] + transform.right * 20;
-
+            else
+                SlotLocations[i] = SlotLocations[i - 1] + transform.right * 20;
+            //Instantiate(, gameObject.transform.localPosition, Quaternion.identity);
         }
     }
 
@@ -54,8 +56,12 @@ public class S_PuzzleSlot : MonoBehaviour
         {
 
             if (!SlotPart(collision.gameObject, Slots[0]))
+            {
                 collision.gameObject.transform.position = transform.position + transform.up * 5;
+                collision.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
+                collision.gameObject.GetComponent<S_PuzzlePart>().RandomPattrenIndex();
+            }
         }
     }
 
