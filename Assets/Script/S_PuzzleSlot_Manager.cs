@@ -4,12 +4,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevelPhysics;
 
-public class S_PuzzleSlot : MonoBehaviour
+public class S_PuzzleSlot_Manager : MonoBehaviour
 {
 
-    int[] Slots = new int[5];
+    int[] NumSlots = new int[5];
 
-    int[] NumSlots = { 1, 1, 2, 2, 3, 4 };
+    int[] MaxNumSlots = { 1, 1, 2, 2, 3, 4 };
 
     S_PuzzlePart GG;
 
@@ -19,13 +19,13 @@ public class S_PuzzleSlot : MonoBehaviour
     // Randomizes all pattrens and array sizes
     void NewSlots()
     {
-        Slots = new int[NumSlots[Random.Range(0, NumSlots.Length)]];
+        NumSlots = new int[MaxNumSlots[Random.Range(0, MaxNumSlots.Length)]];
 
-        SlotLocations = new Vector3[Slots.Length];
+        SlotLocations = new Vector3[NumSlots.Length];
 
-        for (int i = 0; i < Slots.Length; i++)
+        for (int i = 0; i < NumSlots.Length; i++)
         {
-            Slots[i] = Random.Range(0, GG.GetPattrenSize());
+            NumSlots[i] = Random.Range(0, GG.GetPattrenSize());
             if (i == 0)
                 SlotLocations[0] = transform.position + transform.right * 20;
             else
@@ -34,7 +34,7 @@ public class S_PuzzleSlot : MonoBehaviour
         }
     }
 
-    // Takes a GameObject 
+    // Takes a GameObject and checks if it has S_PizzlePart Script if so then does it have the right index
     bool SlotPart(GameObject Part, int SlotIndex)
     {
         if (Part.GetComponent<S_PuzzlePart>() == null) return false;
@@ -55,12 +55,16 @@ public class S_PuzzleSlot : MonoBehaviour
         else
         {
 
-            if (!SlotPart(collision.gameObject, Slots[0]))
+            if (!SlotPart(collision.gameObject, NumSlots[0]))
             {
                 collision.gameObject.transform.position = transform.position + transform.up * 5;
                 collision.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
-                collision.gameObject.GetComponent<S_PuzzlePart>().RandomPattrenIndex();
+                //collision.gameObject.GetComponent<S_PuzzlePart>().RandomPattrenIndex();
+            }
+            else
+            {
+
             }
         }
     }
