@@ -26,7 +26,7 @@ public class S_ButtonBehaviors : MonoBehaviour
     {
         Debug.Log("button triggered");
         //there's a million ways to ensure the object is the player, Dont use this one i'll edit the button with you all tomorrow
-        if (other.gameObject == GameObject.Find("Player mockup"))
+        if (other.gameObject.CompareTag("Player"))
         {
             ToggleButton();
         }
