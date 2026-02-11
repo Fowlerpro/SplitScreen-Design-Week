@@ -9,8 +9,9 @@ public class S_ButtonBehaviors : MonoBehaviour
      * ToggleButton() is a public function that you can call from your player script, or from a manager
      */
 
-    [SerializeField]
-    GameObject connectedLight;
+
+    [SerializeField] GameObject connectedLightR;
+    [SerializeField] GameObject connectedLightL;
 
     private bool isOn;
 
@@ -19,7 +20,8 @@ public class S_ButtonBehaviors : MonoBehaviour
         //swap boolean
         isOn = !isOn;
 
-        connectedLight.SetActive(isOn);
+        connectedLightR.SetActive(isOn);
+        connectedLightL.SetActive(isOn);
     }
 
     private void OnTriggerEnter(Collider other)
