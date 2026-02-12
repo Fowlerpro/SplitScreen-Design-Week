@@ -13,7 +13,7 @@ public class S_LeverBehaviors : MonoBehaviour
     [SerializeField] GameObject Door4;
     [SerializeField] GameObject Door5;
 
-    private bool isOpen;
+    private bool isOpen = true;
 
     public void ToggleSwitch()
     {
