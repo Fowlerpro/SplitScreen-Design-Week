@@ -3,7 +3,42 @@ guid: a21e5459f6a3df24b85fa378350bc1c2
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Body
+    second: {fileID: 2100000, guid: 5769320959655f04fafbed3292bf5e2c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Collar
+    second: {fileID: 2100000, guid: e425b7ace5a1fa342a5eca2d3e06ce73, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Hair
+    second: {fileID: 2100000, guid: c55ba621979af584fb4df67778f9e900, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Head
+    second: {fileID: 2100000, guid: 46d39ff8787d3e546b999469c0ccf87e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Headphones
+    second: {fileID: 2100000, guid: 555e8e641da1d974a9a249b8c2d09ca7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Vizer
+    second: {fileID: 2100000, guid: 51b26db0eed6a104e95c0d37ae17d9dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Wire
+    second: {fileID: 2100000, guid: c807e0c1f96da664eb247158246bd6cf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,8 +76,8 @@ ModelImporter:
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0

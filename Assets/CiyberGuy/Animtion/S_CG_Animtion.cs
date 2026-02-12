@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class S_CG_Animtion : MonoBehaviour
 {
-    Animator anim;
+    public Animator anim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,5 +14,6 @@ public class S_CG_Animtion : MonoBehaviour
     void Update()
     {
         //anim.SetFloat ("MoveSpeed", 1);
+        //anim.SetBool ("IsHolding", true);
     }
 }
