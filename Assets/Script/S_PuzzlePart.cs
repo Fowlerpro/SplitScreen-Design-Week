@@ -8,17 +8,30 @@ public class S_PuzzlePart : MonoBehaviour
 {
     Vector3[] Pattren = new Vector3[5];
 
-    int PattrenIndex = 0;
+    public int PattrenIndex = 0;
+
+    public int GetPattrenSize()
+    {
+        return Pattren.Length;
+    }
+
+    public int RandomPattrenIndex()
+    {
+        PattrenIndex = Random.Range(0, Pattren.Length);
+        return PattrenIndex;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PattrenIndex = Random.Range(0, Pattren.Length);
+        RandomPattrenIndex();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+
 }
