@@ -5523,7 +5523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RandomSpawner
   piecePrefabs:
   - {fileID: 6873051620046266082, guid: b70a93a2ca7679645a080b7e9087f84f, type: 3}
-  timeBetweenSpawns: 20
+  timeBetweenSpawns: 1
   spawnCount: 2
   corner1: {fileID: 274724916}
   corner2: {fileID: 1886731274}
