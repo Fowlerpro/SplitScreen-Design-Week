@@ -1,3 +1,4 @@
+using System;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,16 +7,24 @@ using UnityEngine.InputSystem;
 public class JosPlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+
     private Rigidbody rb;
     private Vector2 moveInput;
-    private InputAction moveAction;
+    private InputAction moveAction, interactAction, interactAction2;
+    bool isHolding;
+    [SerializeField]
+    ItemHolderBehaviors itemHolderRef;
+
     void Awake()
     {
         //replacing rigidbody2D for a 3D rigidbody
         rb = GetComponent<Rigidbody>();
 
+
         //assigning InputAction variable within this script so we can read whenever it's triggered in Update
         moveAction = InputSystem.actions.FindAction("Move");
+        interactAction = InputSystem.actions.FindAction("Interact");
+        interactAction2 = InputSystem.actions.FindAction("Jump");
     }
     private void Update()
     {
@@ -30,16 +39,55 @@ public class JosPlayerMovement : MonoBehaviour
         }
         //else, stop!
         else moveInput = new Vector2(0, 0);
+
+        if (interactAction.WasPressedThisFrame() || interactAction2.WasPressedThisFrame())
+        {
+            if (isHolding)
+            {
+                itemHolderRef.Drop();
+                isHolding = !isHolding;
+            }
+            else
+            {
+                isHolding = itemHolderRef.TryPickupItem();
+            }
+        
+        }
     }
 
-    // I'm not familiar with this method of getting a movement value from the input system! I commented it out for my mockup
-    //void OnMove(InputValue value)
+    //private void DropItem()
     //{
-    //    moveInput = value.Get<Vector2>();
+    //    heldObjRB.useGravity = true;
+    //    objectHolderSlot.DetachChildren();
     //}
+
+    //private bool PickupItem()
+    //{
+    //    bool objectInRange = Physics.SphereCast(transform.position, pickupRange, transform.forward, out RaycastHit hitInfo, LayerMask.NameToLayer("Interactables"));
+    //    if (objectInRange)
+    //    {
+            
+    //        if (hitInfo.rigidbody.gameObject.CompareTag("Interactable"))
+    //        {
+    //            Debug.Log("Hit object, Interactable!");
+    //            heldObjRB = hitInfo.rigidbody;
+    //            heldObjRB.useGravity = false;
+    //            hitInfo.rigidbody.transform.SetParent(objectHolderSlot);
+    //            return true;
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Hit object, non interactable");
+    //        }
+    //    }
+    //    //else
+    //    return false;
+    //}
+    
     void FixedUpdate()
     {
         //setting linear velocity is a good way to ensure physics applies, but a more complicated rb.AddForce can really take movement to the next level
         rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
     }
+
 }

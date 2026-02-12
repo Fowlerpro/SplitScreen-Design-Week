@@ -1,26 +1,49 @@
 using UnityEngine;
 public class RandomSpawner : MonoBehaviour
 {
-    public GameObject piecePrefab;
+    [Header("Pieces to Spawn")]
+    [SerializeField]
+    GameObject[] piecePrefabs;
 
+    [Header("Time between waves")]
+    [SerializeField]
+    float timeBetweenSpawns;
+    private float spawnTimer = 0;
+
+    [Header("Pieces to spawn for each wave")]
+    [SerializeField]
     public int spawnCount = 10;
 
-    public float minX = -8f;
-    public float maxX = 8f;
-    public float minY = -4f;
-    public float maxY = 4f;
+    [Header("2 points to spawn between. Set 1 to lower left point")]
+    [SerializeField]
+    Transform corner1;
+    [SerializeField]
+    Transform corner2;
 
     void Start()
     {
+        spawnTimer = 0;
+    }
+    private void Update()
+    {
+        if (spawnTimer > timeBetweenSpawns)
+        {
+            DoSpawning();
+            spawnTimer = 0;
+        }
+        else spawnTimer += Time.deltaTime;
+    }
+
+    private void DoSpawning()
+    {
         for (int i = 0; i < spawnCount; i++)
         {
-            float randomX = Random.Range(minX, maxX);
-            float randomY = Random.Range(minY, maxY);
+            float corner1X = corner1.position.x;
+            float corner1Y = corner1.position.y;
+            Vector3 randomSpawnPos = new Vector3(corner1X + Random.Range(0, corner2.position.x - corner1X), transform.position.y, corner1Y + Random.Range(0, corner2.position.y - corner1Y));
+            int randomIndex = Random.Range(0, piecePrefabs.Length);
 
-            Vector2 spawnPosition = new Vector2(randomX, randomY);
-
-            Instantiate(piecePrefab, spawnPosition, Quaternion.identity);
-
+            Instantiate(piecePrefabs[randomIndex], randomSpawnPos, new Quaternion());
         }
     }
 }
