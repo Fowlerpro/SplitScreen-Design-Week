@@ -39,8 +39,8 @@ public class RandomSpawner : MonoBehaviour
         for (int i = 0; i < spawnCount; i++)
         {
             float corner1X = corner1.position.x;
-            float corner1Y = corner1.position.y;
-            Vector3 randomSpawnPos = new Vector3(corner1X + Random.Range(0, corner2.position.x - corner1X), transform.position.y, corner1Y + Random.Range(0, corner2.position.y - corner1Y));
+            float corner1Z = corner1.position.z;
+            Vector3 randomSpawnPos = new Vector3(corner1X + Random.Range(0, corner2.position.x - corner1X), transform.position.y, corner1Z + Random.Range(0, corner2.position.y - corner1Z));
             int randomIndex = Random.Range(0, piecePrefabs.Length);
 
             Instantiate(piecePrefabs[randomIndex], randomSpawnPos, new Quaternion());
