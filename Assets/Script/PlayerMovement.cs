@@ -1,7 +1,5 @@
-using UnityEngine; 
+using UnityEngine;
 using UnityEngine.InputSystem;
-
-//new script for input system
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
@@ -11,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    void OnMove(InputValue value)
+    public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+
     }
     void FixedUpdate()
     {
