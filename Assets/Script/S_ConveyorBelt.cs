@@ -13,9 +13,9 @@ public class S_ConveyorBelt : MonoBehaviour
 
     [Header("Physics movement settings")]
     [SerializeField]
-    float beltSpeed;
+    float forceX = 10;
     [SerializeField]
-    float forceX = 10, forceZ = 0;
+    float forceZ = 0;
 
     private void OnTriggerStay(Collider other)
     {
