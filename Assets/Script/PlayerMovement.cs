@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private Vector2 moveInput;
-    void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
     public void OnMove(InputValue value)
     {
@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
+        Vector3 move = new Vector3(moveInput.x, 0f, moveInput.y);
+        rb.linearVelocity = move * moveSpeed;
     }
 }
