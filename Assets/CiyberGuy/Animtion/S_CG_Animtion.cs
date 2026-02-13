@@ -4,6 +4,16 @@ public class S_CG_Animtion : MonoBehaviour
 {
     public Animator anim;
 
+    public void SetSpeed(float Speed)
+    {
+        anim.SetFloat("MoveSpeed", Speed);
+    }
+
+    public void SetIsHolding(bool Holding)
+    {
+        anim.SetBool("IsHolding", Holding);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
