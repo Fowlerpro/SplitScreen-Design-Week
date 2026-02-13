@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df09933417b23e4d846183007510385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_SoloPuzzleSlot
+  GG: {fileID: 2395065896367233251, guid: 6e140c1f2f9884f439990a6cfdabf5a7, type: 3}
+  Index: 0
   prefab: {fileID: 9097815366911900148}
 --- !u!33 &9132227681420772980
 MeshFilter:
@@ -81,7 +83,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: deb01d6d47e0e6a41b960ab7ae3719e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

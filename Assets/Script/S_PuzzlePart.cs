@@ -6,13 +6,18 @@ using UnityEngine;
 
 public class S_PuzzlePart : MonoBehaviour
 {
-    Vector3[] Pattren = new Vector3[5];
+    public Color[] Pattren;
 
     public int PattrenIndex = 0;
 
     public int GetPattrenSize()
     {
         return Pattren.Length;
+    }
+
+    public Color[] GetPattren() 
+    {
+        return Pattren;
     }
 
     public int RandomPattrenIndex()
@@ -25,6 +30,10 @@ public class S_PuzzlePart : MonoBehaviour
     void Start()
     {
         RandomPattrenIndex();
+
+        Renderer Rhair = GetComponent<Renderer>();
+
+        Rhair.material.SetColor("_EmissionColor", Pattren[PattrenIndex]);
     }
 
     // Update is called once per frame
