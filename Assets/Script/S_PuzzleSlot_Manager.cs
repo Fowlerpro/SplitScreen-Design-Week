@@ -123,7 +123,7 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         }
     }
 
-    void CalScore()
+    public void CalScore()
     {
         for (int i = 0; i < Slots.Length; i++)
         {
@@ -147,6 +147,8 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
     void Start()
     {
         NewSlots();
+
+        
     }
 
     // Update is called once per frame
