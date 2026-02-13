@@ -6,7 +6,6 @@ public class S_SoloPuzzleSlot : S_PuzzleSlot_Manager
 
     public void Kill() 
     {
-        CurPart.GetComponent<S_PuzzlePart>().Kill();
         GameObject.Destroy(gameObject);
     }
 

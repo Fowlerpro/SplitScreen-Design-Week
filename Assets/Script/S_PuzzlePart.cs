@@ -8,14 +8,7 @@ public class S_PuzzlePart : MonoBehaviour
 {
     public Color[] Pattren;
 
-    public int Score = 1000;
-
     public int PattrenIndex = 0;
-
-    public void Kill()
-    {
-        GameObject.Destroy(gameObject);
-    }
 
     public int GetPattrenSize()
     {
