@@ -13,15 +13,19 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
 
     int[] MaxNumSlots = { 1, 1, 2, 2, 3, 4 };
 
+    int Score;
+
     public bool HasPart = false;
 
-    GameObject CurPart;
+    public GameObject CurPart;
 
     public GameObject GG;
 
     public int Index;
 
     public GameObject prefab;
+
+    public GameObject GameState;
 
 
     private GameObject[] Slots;
@@ -81,7 +85,7 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
             Part.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
             Part.GetComponent<Rigidbody>().Describe();
-            
+
 
             CurPart = Part;
             HasPart = true;
@@ -117,6 +121,24 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
 
             }
         }
+    }
+
+    void CalScore()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            if(Slots[i].GetComponent<S_SoloPuzzleSlot>().HasPart == true)
+            {
+                S_SoloPuzzleSlot FF = Slots[i].GetComponent<S_SoloPuzzleSlot>();
+
+                Score += FF.CurPart.GetComponent<S_PuzzlePart>().Score;
+                FF.Kill();
+            }
+        }
+        Slots = null;
+
+
+        GameState.GetComponent<GameMaster>().scorePanel();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
