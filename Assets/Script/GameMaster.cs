@@ -1,5 +1,6 @@
 using Unity.Hierarchy;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameMaster : MonoBehaviour
 {

@@ -5,8 +5,10 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     private Rigidbody rb;
     private Vector2 moveInput;
+
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
     }
     public void OnMove(InputValue value)

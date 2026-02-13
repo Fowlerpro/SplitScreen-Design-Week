@@ -1,4 +1,3 @@
-using System;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -50,15 +49,6 @@ public class JosPlayerMovement : MonoBehaviour
         //returns true if there is a movement action!
 
 
-            //Rotates player only when theyre moving
-            float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
-
-            if (TargetRot != Quaternion.Euler(0, angle, 0))
-                OldRot = TargetRot;
-
-            TargetRot = Quaternion.Euler(0, angle, 0);
-        }
-
         if (interactAction.WasPressedThisFrame() || interactAction2.WasPressedThisFrame())
         {
             if (isHolding)
@@ -100,14 +90,14 @@ public class JosPlayerMovement : MonoBehaviour
 
             lerpRotTime += 10 * Time.deltaTime;
 
-            Debug.Log(lerpRotTime);
+            //Debug.Log(lerpRotTime);
 
-            if (lerpRotTime >= 1) 
+            if (lerpRotTime >= 1)
             {
                 OldRot = TargetRot;
                 transform.rotation = TargetRot;
             }
-            
+
         }
         else
         {
@@ -116,42 +106,59 @@ public class JosPlayerMovement : MonoBehaviour
 
         animP.SetSpeed(moveSpeed / MaxSpeed);
         animP.SetIsHolding(isHolding);
+        Debug.Log(moveSpeed);
     }
-
-    //private void DropItem()
-    //{
-    //    heldObjRB.useGravity = true;
-    //    objectHolderSlot.DetachChildren();
-    //}
-
-    //private bool PickupItem()
-    //{
-    //    bool objectInRange = Physics.SphereCast(transform.position, pickupRange, transform.forward, out RaycastHit hitInfo, LayerMask.NameToLayer("Interactables"));
-    //    if (objectInRange)
-    //    {
-
-    //        if (hitInfo.rigidbody.gameObject.CompareTag("Interactable"))
-    //        {
-    //            Debug.Log("Hit object, Interactable!");
-    //            heldObjRB = hitInfo.rigidbody;
-    //            heldObjRB.useGravity = false;
-    //            hitInfo.rigidbody.transform.SetParent(objectHolderSlot);
-    //            return true;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Hit object, non interactable");
-    //        }
-    //    }
-    //    //else
-    //    return false;
-    //}
-
-    void FixedUpdate()
+    public void OnMove(InputValue value)
     {
+        moveInput = value.Get<Vector2>();
+        TargetSpeed = MaxSpeed;// Sets new Target Speed
 
-        //setting linear velocity is a good way to ensure physics applies, but a more complicated rb.AddForce can really take movement to the next level
-        rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
+
+        //Rotates player only when theyre moving
+        float angle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
+
+        if (TargetRot != Quaternion.Euler(0, angle, 0))
+        OldRot = TargetRot;
+        
+        TargetRot = Quaternion.Euler(0, angle, 0);
+        Debug.Log("ran Movement");
     }
+
+        //private void DropItem()
+        //{
+        //    heldObjRB.useGravity = true;
+        //    objectHolderSlot.DetachChildren();
+        //}
+
+        //private bool PickupItem()
+        //{
+        //    bool objectInRange = Physics.SphereCast(transform.position, pickupRange, transform.forward, out RaycastHit hitInfo, LayerMask.NameToLayer("Interactables"));
+        //    if (objectInRange)
+        //    {
+
+        //        if (hitInfo.rigidbody.gameObject.CompareTag("Interactable"))
+        //        {
+        //            Debug.Log("Hit object, Interactable!");
+        //            heldObjRB = hitInfo.rigidbody;
+        //            heldObjRB.useGravity = false;
+        //            hitInfo.rigidbody.transform.SetParent(objectHolderSlot);
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            Debug.Log("Hit object, non interactable");
+        //        }
+        //    }
+        //    //else
+        //    return false;
+        //}
+
+        void FixedUpdate()
+{
+
+    //setting linear velocity is a good way to ensure physics applies, but a more complicated rb.AddForce can really take movement to the next level
+    rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
+
+}
 
 }
