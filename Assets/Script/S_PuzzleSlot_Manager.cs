@@ -78,6 +78,11 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         {
             Part.transform.position = transform.position;
 
+            Part.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+
+            Part.GetComponent<Rigidbody>().Describe();
+            
+
             CurPart = Part;
             HasPart = true;
             return true;
@@ -102,6 +107,7 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
             if (can == false)//NumSlots[0]
             {
                 collision.gameObject.transform.position = transform.position + transform.up * 5;
+
                 collision.gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
                 //NewSlots();
