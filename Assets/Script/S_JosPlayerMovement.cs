@@ -112,9 +112,14 @@ public class JosPlayerMovement : MonoBehaviour
 
             lerpRotTime += 10 * Time.deltaTime;
 
-            //Debug.Log(transform.rotation);
-            //Debug.Log("Target " + TargetRot);
-            //Debug.Log("Old " + OldRot);
+            Debug.Log(lerpRotTime);
+
+            if (lerpRotTime >= 1) 
+            {
+                OldRot = TargetRot;
+                transform.rotation = TargetRot;
+            }
+            
         }
         else
         {
@@ -122,7 +127,7 @@ public class JosPlayerMovement : MonoBehaviour
         }
 
         animP.SetSpeed(moveSpeed / MaxSpeed);
-
+        animP.SetIsHolding(isHolding);
     }
 
     //private void DropItem()

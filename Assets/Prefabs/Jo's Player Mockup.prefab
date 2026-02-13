@@ -313,7 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4597e901684ba0542909eb193d40b3da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JosPlayerMovement
-  moveSpeed: 5
+  MaxSpeed: 120
+  animP: {fileID: 0}
   itemHolderRef: {fileID: 1977114532600394791}
 --- !u!1001 &1920228032653776688
 PrefabInstance:
