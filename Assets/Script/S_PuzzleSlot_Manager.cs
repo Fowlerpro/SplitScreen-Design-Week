@@ -2,6 +2,7 @@ using System.Globalization;
 using Unity.Multiplayer.Center.Common;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.LowLevelPhysics;
 
@@ -12,7 +13,13 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
 
     int[] MaxNumSlots = { 1, 1, 2, 2, 3, 4 };
 
-    S_PuzzlePart GG;
+    public bool HasPart = false;
+
+    GameObject CurPart;
+
+    public GameObject GG;
+
+    public int Index;
 
     public GameObject prefab;
 
@@ -23,6 +30,19 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
     void NewSlots()
     {
 
+        if (Slots != null)
+        {
+            for (int i = 0; i < Slots.Length; i++)
+            {
+                if (Slots[i].GetComponent<S_PuzzlePart>() != null)//SlotIndex
+                {
+                    Slots[i].GetComponent<S_SoloPuzzleSlot>().Kill();
+                }
+
+            }
+        }
+
+
         NumSlots = new int[MaxNumSlots[Random.Range(0, MaxNumSlots.Length)]];
         Slots = new GameObject[NumSlots.Length];
 
@@ -31,15 +51,20 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
             NumSlots[i] = Random.Range(0, 5);
 
             if (i == 0)
+            {
                 Slots[i] = Instantiate(prefab, transform.localPosition, transform.rotation);
+            }
             else
             {
                 int L = i - 1;
                 if (L < 0)
                     L = 0;
 
-                Slots[i] = Instantiate(prefab, Slots[L].transform.localPosition + Slots[L].transform.right * 2, transform.rotation);
+                Slots[i] = Instantiate(prefab, Slots[L].transform.localPosition + Slots[L].transform.right * 50, transform.rotation);
+
             }
+
+
         }
 
     }
@@ -52,10 +77,15 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         if (Part.GetComponent<S_PuzzlePart>().PattrenIndex == SlotIndex)//SlotIndex
         {
             Part.transform.position = transform.position;
+
+            CurPart = Part;
+            HasPart = true;
             return true;
         }
         else
         {
+            CurPart = null;
+            HasPart = false;
             return false;
 
         }
@@ -67,7 +97,7 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         if (collision == null) return;
         else
         {
-            bool can = SlotPart(collision.gameObject, 0);
+            bool can = SlotPart(collision.gameObject, Index);
 
             if (can == false)//NumSlots[0]
             {

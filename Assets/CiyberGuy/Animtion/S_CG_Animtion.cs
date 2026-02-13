@@ -7,7 +7,7 @@ public class S_CG_Animtion : MonoBehaviour
     public GameObject[] Colorables;
 
     public GameObject[] PColorables;
-
+     
     public GameObject[] SColorables;
 
     public Color[] PColors;
