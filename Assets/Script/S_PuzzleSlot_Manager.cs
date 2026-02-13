@@ -138,7 +138,9 @@ public class S_PuzzleSlot_Manager : MonoBehaviour
         Slots = null;
 
 
-        GameState.GetComponent<GameMaster>().scorePanel();
+        GameState.GetComponent<GameMaster>().ScoreUp(Score);
+        Score = 0;
+        NewSlots();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
