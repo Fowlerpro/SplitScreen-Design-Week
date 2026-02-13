@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 336096845766017869}
   m_Layer: 0
   m_Name: P_PuzzlePart
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3953fa75ea94540885b487ae38bc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_PuzzlePart
+  Pattren:
+  - {r: 0.9450981, g: 0.6509804, b: 0.40000004, a: 0}
+  - {r: 0.37254903, g: 0.8078432, b: 0.28627452, a: 0}
+  - {r: 0.9450981, g: 0.27058825, b: 0.7568628, a: 0}
+  - {r: 0.57254905, g: 0.3803922, b: 0.93725497, a: 0}
   PattrenIndex: 0
 --- !u!33 &1484868542541250230
 MeshFilter:
@@ -82,7 +87,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: deb01d6d47e0e6a41b960ab7ae3719e2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
