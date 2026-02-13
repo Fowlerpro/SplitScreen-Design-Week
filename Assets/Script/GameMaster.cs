@@ -1,3 +1,4 @@
+using Unity.Hierarchy;
 using UnityEngine;
 
 public class GameMaster : MonoBehaviour
@@ -10,6 +11,7 @@ public class GameMaster : MonoBehaviour
     public GameObject namePanel;
 
 
+    public float score;
 
     // Update is called once per frame
     void Update()
@@ -31,5 +33,10 @@ public class GameMaster : MonoBehaviour
                 namePanel.SetActive(true);
             }
         }
+    }
+
+    public void ScoreUp(float value)
+    {
+        score += value;
     }
 }
