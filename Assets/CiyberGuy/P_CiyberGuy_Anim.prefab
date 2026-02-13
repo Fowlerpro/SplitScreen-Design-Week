@@ -99,7 +99,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5575497404081581591}
   m_Layer: 0
-  m_Name: P_CiyberGuy_Anim_Test
+  m_Name: P_CiyberGuy_Anim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,9 +186,19 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3366844874795109573}
   m_SourcePrefab: {fileID: 100100000, guid: a21e5459f6a3df24b85fa378350bc1c2, type: 3}
+--- !u!1 &4304762299814110896 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8746381996470147945, guid: a21e5459f6a3df24b85fa378350bc1c2, type: 3}
+  m_PrefabInstance: {fileID: 4817992422800784857}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4996264303216368178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a21e5459f6a3df24b85fa378350bc1c2, type: 3}
+  m_PrefabInstance: {fileID: 4817992422800784857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5335949369937697201 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 635547659545568360, guid: a21e5459f6a3df24b85fa378350bc1c2, type: 3}
   m_PrefabInstance: {fileID: 4817992422800784857}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5628825830200000648 stripped
@@ -209,3 +219,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::S_CG_Animtion
   anim: {fileID: 0}
+  Colorables:
+  - {fileID: 7253050814166249521}
+  - {fileID: 4304762299814110896}
+  PColorables: []
+  SColorables:
+  - {fileID: 2152944037292064842}
+  - {fileID: 5335949369937697201}
+  PColors:
+  - {r: 0.43529412, g: 0.12941177, b: 0.6627451, a: 0}
+  - {r: 0.6039216, g: 0, b: 0.38039216, a: 0}
+  - {r: 0.5058824, g: 0.84313726, b: 0.36078432, a: 0}
+  - {r: 0, g: 1, b: 0.6156863, a: 0}
+  SColors:
+  - {r: 0.5058824, g: 0.84313726, b: 0.36078432, a: 0}
+  - {r: 0, g: 1, b: 0.6156863, a: 0}
+  - {r: 0.43529412, g: 0.12941177, b: 0.6627451, a: 0}
+  - {r: 0.6039216, g: 0, b: 0.38039216, a: 0}
+  ColorIndex: 0
+--- !u!1 &7253050814166249521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6452266432751415832, guid: a21e5459f6a3df24b85fa378350bc1c2, type: 3}
+  m_PrefabInstance: {fileID: 4817992422800784857}
+  m_PrefabAsset: {fileID: 0}
