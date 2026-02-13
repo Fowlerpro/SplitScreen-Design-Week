@@ -48,10 +48,6 @@ public class JosPlayerMovement : MonoBehaviour
     {
 
         //returns true if there is a movement action!
-        if (moveAction.IsInProgress())
-        {
-            moveInput = moveAction.ReadValue<Vector2>();
-            TargetSpeed = MaxSpeed;// Sets new Target Speed
 
 
             //Rotates player only when theyre moving
@@ -61,14 +57,6 @@ public class JosPlayerMovement : MonoBehaviour
                 OldRot = TargetRot;
 
             TargetRot = Quaternion.Euler(0, angle, 0);
-        }
-
-        //else, stop!
-        else
-        {
-            //moveInput = new Vector2(0, 0);
-            TargetSpeed = 0;// Sets new Target Speed
-
         }
 
         if (interactAction.WasPressedThisFrame() || interactAction2.WasPressedThisFrame())

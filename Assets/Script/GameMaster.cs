@@ -8,7 +8,6 @@ public class GameMaster : MonoBehaviour
     bool timerActive = true;
     public float countdownTimer = 5;
     public GameObject scorePanel;
-    public GameObject namePanel;
 
 
     public float score;
@@ -30,7 +29,6 @@ public class GameMaster : MonoBehaviour
             {
                 Debug.Log("Game Over!");
                 scorePanel.SetActive(true);
-                namePanel.SetActive(true);
             }
         }
     }
